@@ -29,4 +29,4 @@ jobs:
         with:
           push: true
           tags: montte/githubactions:latest
-        working-directory: Docker
+        
