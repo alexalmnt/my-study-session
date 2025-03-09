@@ -4,45 +4,44 @@ on:
   push:
     branches:
       - main
-    workflow_dispatch:
-
+  workflow_dispatch:
 
 jobs:
   terraform:
     runs-on: ubuntu-latest
 
     steps: 
-    - name: checkout code 
+    - name: Checkout code 
       uses: actions/checkout@v2
 
-    - name: Set Up terraform
+    - name: Set Up Terraform
       uses: hashicorp/setup-terraform@v1
       with:
         terraform_version: 1.1.0
 
-   - name: Configure AWS Credentials 
-     uses: aws-actions/configure-aws-credentials@v1
-     with:
+    - name: Configure AWS Credentials 
+      uses: aws-actions/configure-aws-credentials@v1
+      with:
         aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         aws-region: us-east-1 # Change to your region
 
-   - name: Terraform init 
-     id: Init
-     run: terraform init
-     working-directory: terraform
+    - name: Terraform init 
+      id: Init
+      run: terraform init
+      working-directory: terraform
 
-   - name: Terraform Validate
-     id: Validate
-     run: terraform validate
-     working-directory: terraform
+    - name: Terraform Validate
+      id: Validate
+      run: terraform validate
+      working-directory: terraform
 
-   - name: Terraform plan
-     id: plan
-     run: terraform plan
-     working-directory: terraform
+    - name: Terraform plan
+      id: plan
+      run: terraform plan
+      working-directory: terraform
 
-   - name: Terraform apply
-     id: apply
-     run: terraform apply -auto-approve
-     working-directory: terraform
+    - name: Terraform apply
+      id: apply
+      run: terraform apply -auto-approve
+      working-directory: terraform
