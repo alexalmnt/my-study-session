@@ -2,9 +2,7 @@ name: Build Docker Container
 
 on:
   push:
-    branches:
-      - main
-      - master 
+    workflow_dispatch: 
 
 jobs:
   docker:
