@@ -41,7 +41,6 @@ jobs:
         uses: terraform-linters/tflint-action@v1
         with:
           args: --init
-        working-directory: terraform
 
       - name: Run TFLint Checks
         run: tflint --format compact
