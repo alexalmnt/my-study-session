@@ -1,0 +1,6 @@
+flask
+
+# Why this file?
+	•	It tells Python which packages your app needs.
+	•	GitHub Actions and Docker will use this to install Flask.
+
